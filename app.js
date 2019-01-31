@@ -12,11 +12,11 @@ var helmet = require('helmet');
 
 var app = express();
 
-app.use(helmet);
+app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://localibuser:localib1@ds147190.mlab.com:47190/local_libroli';
+var mongoDB = process.env.MONGODB_URI || 'mongodb://localibuser:localib1@ds147190.mlab.com:47190/local_libroli';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
